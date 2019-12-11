@@ -1,16 +1,22 @@
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
-
 public class Problema2 {
+
     public static void main(String[] args) {
-        int[] numbers = new int[2];
-        numbers[0] = 15;
-        numbers[1] = 20;
-        int n = 21;
-        List<Integer> list = Arrays.stream(numbers).boxed().collect(Collectors.toList());
-        int c = list.stream().min(Comparator.comparingInt(i -> Math.abs(i - n))).orElseThrow(() -> new NoSuchElementException("No value present"));
+        Problema2 number = new Problema2();
+
+        System.out.println(number.closestValue(19, 21));
+        System.out.println(number.closestValue(17, 22));
+        System.out.println(number.closestValue(22, 31));
+    }
+
+    public int closestValue(int n1, int n2) {
+
+        if(n1 > 21 && n2 > 21) {
+            return 0;
+        } else if (n1 <= 21 && n1 > n2) {
+            return n1;
+        } else if (n2 <= 21 && n2>n1) {
+            return n2;
+        }
+        return n1;
     }
 }
